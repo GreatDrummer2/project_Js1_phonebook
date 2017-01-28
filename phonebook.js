@@ -1,14 +1,10 @@
 var users =[];
 function nId(){
-  var currentCount = 0;
-  return function(){
-    return currentCount++;
-  }
+  return Math.floor(Math.random() * 1000000000);
 }
-var counter = nId();
 function newUser (users){
   var user = {};
-  user.id = counter();
+  user.id = nId();
   user.name = prompt("Ваше имя");
   while(!user.name){
     user.name = prompt("Ваше имя");
@@ -52,3 +48,8 @@ function csvFormat(users) {
   }).join("\n");
 }
 alert(csvFormat(users));
+function deleteUser(numberinTheList,numberOfUsersUWantToDelete){
+  users.splice(numberinTheList,numberOfUsersUWantToDelete);
+}
+deleteUser(0,1);
+console.log(users);  
