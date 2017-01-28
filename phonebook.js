@@ -37,4 +37,18 @@ function newUser (users){
  newUser(users);
  newUser(users);
  console.log(users);  
-  
+function csvFormat(users) {
+   return users.map(function(user){
+       return Object.keys(user).map(function(key){
+          if( typeof user[key] == 'string' || typeof user[key] == 'number'){
+            return "" + user[key] + "";
+          }
+          else{
+             return user[key].map(function(phone){
+              return "" + phone + "";
+            }).join(";");
+          }
+        }).join(";");
+  }).join("\n");
+}
+alert(csvFormat(users));
